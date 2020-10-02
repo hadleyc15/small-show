@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-
 import ProductItem from "../ProductItem";
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import spinner from "../../assets/spinner.gif"
@@ -15,7 +14,6 @@ import { useDispatch, useSelector } from 'react-redux';
 function ProductList() {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
-
 const { currentCategory } = state;
 
 const { loading, data } = useQuery(QUERY_PRODUCTS);
@@ -53,7 +51,7 @@ function filterProducts() {
 
   return (
     <div className="my-2">
-      <h2>Our Products:</h2>
+      <h2>Live Streamers:</h2>
       {state.products.length ? (
         <div className="flex-row">
             {filterProducts().map(product => (

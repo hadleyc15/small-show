@@ -5,15 +5,14 @@ import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 
 function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '', userName: '', twitchUserName: '' });
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async event => {
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
-        email: formState.email, password: formState.password,
-        firstName: formState.firstName, lastName: formState.lastName
+        email: formState.email, password: formState.password, firstName: formState.firstName, lastName: formState.lastName, userName: formState.userName, twitchUserName: formState.twitchUserName
       }
     });
     const token = mutationResponse.data.addUser.token;
@@ -56,6 +55,28 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
+
+        <div className="flex-row space-between my-2">
+          <label htmlFor="userName">Username:</label>
+          <input
+            placeholder="Username"
+            name="userName"
+            type="userName"
+            id="userName"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="twitchUserName">Twitch Username:</label>
+          <input
+            placeholder="Twitch Username"
+            name="twitchUserName"
+            type="twitchUserName"
+            id="twitchUserName"
+            onChange={handleChange}
+          />
+        </div>
+
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email:</label>
           <input
@@ -69,7 +90,7 @@ function Signup(props) {
         <div className="flex-row space-between my-2">
           <label htmlFor="pwd">Password:</label>
           <input
-            placeholder="******"
+            placeholder="Password"
             name="password"
             type="password"
             id="pwd"

@@ -15,6 +15,16 @@ const userSchema = new Schema({
     required: true,
     trim: true
   },
+  userName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  twitchUserName: {
+    type: String,
+    required: false,
+    trim: true
+  },
   email: {
     type: String,
     required: true,

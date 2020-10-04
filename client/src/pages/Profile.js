@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
 function Profile() {
     const classes = useStyles();
     return (
+        <div className="container">
         <form className={classes.root} noValidate autoComplete="off">
         <div>
           <TextField required id="standard-required" label="Required" defaultValue="Hello World" />
@@ -146,6 +147,7 @@ function Profile() {
           />
         </div>
       </form>
+      </div>
     )
 }
 export default Profile

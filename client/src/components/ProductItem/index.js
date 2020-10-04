@@ -55,7 +55,7 @@ const addToCart = () => {
         <div>{quantity} {pluralize("item", quantity)} in stock</div>
         <span>${price}</span>
       </div>
-      <button onClick={ addToCart }>Add to cart</button>
+      <button onClick={ addToCart }>Add to list</button>
     </div>
   );
 }

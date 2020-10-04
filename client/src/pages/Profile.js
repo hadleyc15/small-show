@@ -15,7 +15,7 @@ function Profile() {
     return (
         <div className="container">
         <form className={classes.root} noValidate autoComplete="off">
-        <div>
+        {/* <div>
           <TextField required id="standard-required" label="Required" defaultValue="Hello World" />
           <TextField disabled id="standard-disabled" label="Disabled" defaultValue="Hello World" />
           <TextField
@@ -96,7 +96,7 @@ function Profile() {
             helperText="Some important text"
             variant="filled"
           />
-        </div>
+        </div> */}
         <div>
           <TextField
             required

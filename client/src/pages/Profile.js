@@ -102,7 +102,7 @@ function Profile() {
             required
             id="outlined-required"
             label="Required"
-            defaultValue="Hello World"
+            defaultValue="Placeholder Username"
             variant="outlined"
           />
           <TextField

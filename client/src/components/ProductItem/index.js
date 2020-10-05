@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers";
 // import { useStoreContext } from '../../utils/GlobalState';
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
-import { QUERY_USER } from  "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from "react-player";
+
+
 
 function ProductItem(item) {
   const {
@@ -18,7 +19,6 @@ function ProductItem(item) {
     quantity
   } = item;
 
-  
   const dispatch = useDispatch();
   const state = useSelector(state => state);
 
@@ -44,14 +44,14 @@ const addToCart = () => {
     idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
   }
 };
-  
+ 
 
   return (
     <div className="card px-1 py-1">
       <Link to={`/products/${_id}`}>
       <div>
       <ReactPlayer
-        url="https://www.twitch.tv/crix"
+        url="https://www.twitch.tv/"
         playing = {false}
         muted = {true}
         width = {"240px"}

@@ -3,12 +3,10 @@ import { useQuery } from '@apollo/react-hooks';
 import ProductItem from "../ProductItem";
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import spinner from "../../assets/spinner.gif"
-
 // import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
-
+import { QUERY_ALL_USERS } from  "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
-
 import { useDispatch, useSelector } from 'react-redux';
 
 function ProductList() {
@@ -17,6 +15,10 @@ function ProductList() {
 const { currentCategory } = state;
 
 const { loading, data } = useQuery(QUERY_PRODUCTS);
+
+const { data:userData } = useQuery(QUERY_ALL_USERS);
+const userName = userData?.user.firstName;
+console.log(userData)
 
 useEffect(() => {
   if(data) {
@@ -59,6 +61,7 @@ function filterProducts() {
                   key= {product._id}
                   _id={product._id}
                   image={product.image}
+                  // userName={}
                   name={product.name}
                   price={product.price}
                   quantity={product.quantity}

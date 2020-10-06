@@ -5,7 +5,7 @@ import React from 'react';
 // import { useDispatch } from 'react-redux';
 
 
-const CartItem = ({ item }) => {
+const ListItem = ({ item }) => {
 
     return (
         <div className="flex-row">
@@ -23,4 +23,4 @@ const CartItem = ({ item }) => {
     );
 }
 
-export default CartItem;
+export default ListItem;

@@ -1,40 +1,40 @@
 import React, { useEffect } from "react";
-import CartItem from '../CartItem';
+import ListItem from '../ListItem';
 // import Auth from '../../utils/auth';
 import './style.css';
 // import { useStoreContext } from '../../utils/GlobalState';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
+import { TOGGLE_LIST, ADD_MULTIPLE_TO_LIST } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 // import { QUERY_CHECKOUT } from '../../utils/queries';
-import { loadStripe } from '@stripe/stripe-js';
+// import { loadStripe } from '@stripe/stripe-js';
 // import { useLazyQuery } from '@apollo/react-hooks';
 import { useDispatch, useSelector } from 'react-redux';
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+// const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
-const Cart = () => {
+const List = () => {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
   
 
   useEffect(() => {
-    async function getCart() {
-      const cart = await idbPromise('cart', 'get');
-      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+    async function getList() {
+      const list = await idbPromise('list', 'get');
+      dispatch({ type: ADD_MULTIPLE_TO_LIST, products: [...list] });
     };
 
-    if (!state.cart.length) {
-      getCart();
+    if (!state.list.length) {
+      getList();
     }
-  }, [state.cart.length, dispatch]);
+  }, [state.list.length, dispatch]);
 
-  function toggleCart() {
-    dispatch({ type: TOGGLE_CART });
+  function toggleList() {
+    dispatch({ type: TOGGLE_LIST });
   }
 
-  if (!state.cartOpen) {
+  if (!state.listOpen) {
     return (
-      <div className="cart-closed" onClick={toggleCart}>
+      <div className="list-closed" onClick={toggleList}>
         <span
           role="img"
           aria-label="trash">💾</span>
@@ -43,13 +43,13 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart">
-      <div className="close" onClick={toggleCart}>[close]</div>
+    <div className="list">
+      <div className="close" onClick={toggleList}>[close]</div>
       <h2>Saved Streamers</h2>
-      {state.cart.length ? (
+      {state.list.length ? (
         <div>
-          {state.cart.map(item => (
-            <CartItem key={item._id} item={item} />
+          {state.list.map(item => (
+            <ListItem key={item._id} item={item} />
           ))}
         </div>
       ) : (
@@ -65,4 +65,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default List;

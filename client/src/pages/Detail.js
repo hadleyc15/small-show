@@ -8,12 +8,12 @@ import spinner from '../assets/spinner.gif'
 // import { useStoreContext } from "../utils/GlobalState";
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  REMOVE_FROM_CART,
-  UPDATE_CART_QUANTITY,
-  ADD_TO_CART,
+  REMOVE_FROM_LIST,
+  UPDATE_LIST_QUANTITY,
+  ADD_TO_LIST,
   UPDATE_PRODUCTS,
 } from '../utils/actions';
-import Cart from '../components/Cart';
+import Cart from '../components/List';
 
 import { idbPromise } from "../utils/helpers";
 
@@ -33,7 +33,7 @@ function Detail() {
   
     if (itemInCart) {
       dispatch({
-        type: UPDATE_CART_QUANTITY,
+        type: UPDATE_LIST_QUANTITY,
         _id: id,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
       });
@@ -44,7 +44,7 @@ function Detail() {
       });
     } else {
       dispatch({
-        type: ADD_TO_CART,
+        type: ADD_TO_LIST,
         product: { ...currentProduct, purchaseQuantity: 1 }
       });
       // if product isn't in the cart yet, add it to the current shopping cart in IndexedDB
@@ -55,7 +55,7 @@ function Detail() {
 
   const removeFromCart = () => {
     dispatch({
-      type: REMOVE_FROM_CART,
+      type: REMOVE_FROM_LIST,
       _id: currentProduct._id
     });
   

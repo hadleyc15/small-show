@@ -53,7 +53,7 @@ function filterProducts() {
 
   return (
     <div className="my-2">
-      <h2>Our Products:</h2>
+      <h2>Streamers live now:</h2>
       {state.products.length ? (
         <div className="flex-row">
             {filterProducts().map(product => (
@@ -62,8 +62,6 @@ function filterProducts() {
                   _id={product._id}
                   image={product.image}
                   name={product.name}
-                  price={product.price}
-                  quantity={product.quantity}
                 />
             ))}
         </div>

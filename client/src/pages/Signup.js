@@ -97,6 +97,26 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="pwd">Username</label>
+          <input
+            placeholder="Username"
+            name="username"
+            type="username"
+            id="username"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="pwd">Twitch Username</label>
+          <input
+            placeholder="Twitch Username"
+            name="twitchusername"
+            type="twitchusername"
+            id="twitchusername"
+            onChange={handleChange}
+          />
+        </div>
         <div className="flex-row flex-end">
           <button type="submit">
             Submit

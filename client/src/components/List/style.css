@@ -1,4 +1,4 @@
-.cart {
+.list {
     position: fixed;
     top: 0;
     right: 0;
@@ -12,14 +12,14 @@
     border-bottom-left-radius: .5rem;
   }
   
-  .cart h2 {
+  .list h2 {
     font-size: 1.5rem;
     border-bottom: 1px solid var(--dark);
     padding-bottom: .5rem;
     margin: 1rem 0;
   }
   
-  .cart .close {
+  .list.close {
     position: absolute;
     top: .5rem;
     right: .5rem;
@@ -27,11 +27,11 @@
     color: var(--tertiary);
   }
   
-  .cart .close:hover {
+  .list.close:hover {
     text-decoration: underline;
   }
   
-  .cart-closed {
+  .list-closed {
     position: fixed;
     top: 2%;
     right: 1%;
@@ -39,28 +39,28 @@
     cursor: pointer;
     background-color: var(--secondary);
     border-radius: 50%;
-    padding: .25rem;
-    width: 50px;
-    height: 50px;
+    padding: .55rem;
+    width: 60px;
+    height: 60px;
   }
   
-  .cart-closed:hover {
+  .list-closed:hover {
     transform: rotate(8deg);
   }
   
-  .cart img {
+  .list img {
     width: 70px;
     margin-right: 1rem;
   }
   
-  .cart input {
+  .list input {
     width: 50px;
     padding: 0;
     margin: 0 .5rem 1rem 0;
   }
   
   @media screen and (max-width: 768px) {
-    .cart {
+    .list {
       position: relative;
       max-width: 100%;
       max-height: auto;
@@ -68,7 +68,7 @@
       background-color: inherit;
     }
   
-    .cart-closed {
+    .list-closed {
       position: relative;
       margin: 0 auto;
     }

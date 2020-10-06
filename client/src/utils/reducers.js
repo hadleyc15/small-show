@@ -2,12 +2,12 @@ import {
     UPDATE_PRODUCTS,
     UPDATE_CATEGORIES,
     UPDATE_CURRENT_CATEGORY,
-    ADD_TO_CART,
-    ADD_MULTIPLE_TO_CART,
-    REMOVE_FROM_CART,
-    UPDATE_CART_QUANTITY,
-    CLEAR_CART,
-    TOGGLE_CART
+    ADD_TO_LIST,
+    ADD_MULTIPLE_TO_LIST,
+    REMOVE_FROM_LIST,
+    UPDATE_LIST_QUANTITY,
+    CLEAR_LIST,
+    TOGGLE_LIST
 } from './actions';
 
 // import { useReducer } from 'react';
@@ -16,8 +16,8 @@ const initialState = {
     products: [],
     categories: [],
     currentCategory: '',
-    cart: [],
-    cartOpen: false
+    list: [],
+    listOpen: false
 };
 
 export const reducers = (state = initialState, action) => {
@@ -41,35 +41,35 @@ export const reducers = (state = initialState, action) => {
                 currentCategory: action.currentCategory
             };
 
-        case ADD_TO_CART:
+        case ADD_TO_LIST:
             return {
                 ...state,
-                cartOpen: true,
-                cart: [...state.cart, action.product]
+                listOpen: true,
+                list: [...state.list, action.product]
             };
 
-        case ADD_MULTIPLE_TO_CART:
+        case ADD_MULTIPLE_TO_LIST:
             return {
                 ...state,
-                cart: [...state.cart, ...action.products],
+                list: [...state.list, ...action.products],
             };
 
-        case REMOVE_FROM_CART:
-            let newState = state.cart.filter(product => {
+        case REMOVE_FROM_LIST:
+            let newState = state.list.filter(product => {
                 return product._id !== action._id;
             });
 
             return {
                 ...state,
-                cartOpen: newState.length > 0,
-                cart: newState
+                listOpen: newState.length > 0,
+                list: newState
             };
 
-        case UPDATE_CART_QUANTITY:
+        case UPDATE_LIST_QUANTITY:
             return {
                 ...state,
-                cartOpen: true,
-                cart: state.cart.map(product => {
+                listOpen: true,
+                list: state.list.map(product => {
                     if (action._id === product._id) {
                         product.purchaseQuantity = action.purchaseQuantity;
                     }
@@ -77,17 +77,17 @@ export const reducers = (state = initialState, action) => {
                 })
             };
 
-        case CLEAR_CART:
+        case CLEAR_LIST:
             return {
                 ...state,
-                cartOpen: false,
-                cart: []
+                listOpen: false,
+                list: []
             };
 
-        case TOGGLE_CART:
+        case TOGGLE_LIST:
             return {
                 ...state,
-                cartOpen: !state.cartOpen
+                listOpen: !state.listOpen
             };
 
         default:

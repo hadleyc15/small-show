@@ -51,7 +51,7 @@ const addToCart = () => {
       <Link to={`/products/${_id}`}>
       <div>
       <ReactPlayer
-        url="https://www.twitch.tv/"
+        url="https://www.twitch.tv/userName"
         playing = {false}
         muted = {true}
         width = {"240px"}

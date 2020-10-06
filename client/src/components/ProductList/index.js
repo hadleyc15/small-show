@@ -17,8 +17,8 @@ const { currentCategory } = state;
 const { loading, data } = useQuery(QUERY_PRODUCTS);
 
 const { data:userData } = useQuery(QUERY_ALL_USERS);
-const userName = userData?.user.firstName;
-console.log(userData)
+const userName = userData?.users
+console.log(userName)
 
 useEffect(() => {
   if(data) {
@@ -61,7 +61,7 @@ function filterProducts() {
                   key= {product._id}
                   _id={product._id}
                   image={product.image}
-                  // userName={}
+                  userName = {userName}
                   name={product.name}
                   price={product.price}
                   quantity={product.quantity}

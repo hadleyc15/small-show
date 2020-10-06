@@ -131,8 +131,19 @@ db.once('open', async () => {
   await User.deleteMany();
 
   await User.create({
+    firstName: 'Benny',
+    lastName: 'Garza',
+    userName: 'BennyG',
+    twitchUserName: 'x_Acer_x',
+    email: 'benny@testmail.com',
+    password: 'password12345'
+  });
+
+  await User.create({
     firstName: 'Pamela',
     lastName: 'Washington',
+    userName: 'pamela',
+    twitchUserName: '',
     email: 'pamela@testmail.com',
     password: 'password12345',
     orders: [
@@ -145,6 +156,8 @@ db.once('open', async () => {
   await User.create({
     firstName: 'Elijah',
     lastName: 'Holt',
+    userName: 'eli',
+    twitchUserName: 'elitwitch',
     email: 'eholt@testmail.com',
     password: 'password12345'
   });

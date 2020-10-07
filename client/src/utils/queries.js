@@ -20,6 +20,8 @@ export const QUERY_ALL_USERS = gql`
   query {
     users {
       firstName
+      lastName
+      twitchUserName
     }
   }
 `;

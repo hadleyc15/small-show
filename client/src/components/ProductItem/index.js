@@ -14,9 +14,9 @@ function ProductItem(item) {
   const {
     image,
     name,
+    firstName,
+    lastName,
     _id,
-    price,
-    quantity
   } = item;
 
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const addToCart = () => {
       <Link to={`/products/${_id}`}>
       <div>
       <ReactPlayer
-        url="https://www.twitch.tv/userName"
+        url={`https://www.twitch.tv/${name}`}
         playing = {false}
         muted = {true}
         width = {"240px"}
@@ -59,10 +59,12 @@ const addToCart = () => {
       />
     </div>
         <p>{name}</p>
+        <p>{firstName}</p>
+        <p>{lastName}</p>
       </Link>
       <div>
-        <div>{quantity} {pluralize("item", quantity)} in stock</div>
-        <span>${price}</span>
+        {/* <div>{quantity} {pluralize("item", quantity)} in stock</div> */}
+        {/* <span>{lastName}</span> */}
       </div>
       <button onClick={ addToCart }>Add to cart</button>
     </div>

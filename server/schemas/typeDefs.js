@@ -26,6 +26,8 @@ const typeDefs = gql`
     _id: ID
     firstName: String
     lastName: String
+    userName: String
+    twitchUserName: String
     email: String
     orders: [Order]
   }

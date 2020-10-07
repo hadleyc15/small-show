@@ -1,78 +1,80 @@
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import React, { useEffect } from "react";
+import { useQuery } from "@apollo/react-hooks";
 import ProductItem from "../ProductItem";
+import UserList from "../UserList";
 import { QUERY_PRODUCTS } from "../../utils/queries";
-import spinner from "../../assets/spinner.gif"
+import spinner from "../../assets/spinner.gif";
 // import { useStoreContext } from '../../utils/GlobalState';
-import { UPDATE_PRODUCTS } from '../../utils/actions';
-import { QUERY_ALL_USERS } from  "../../utils/queries";
+import { UPDATE_PRODUCTS } from "../../utils/actions";
+import { QUERY_ALL_USERS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 function ProductList() {
   const dispatch = useDispatch();
-  const state = useSelector(state => state);
-const { currentCategory } = state;
+  const state = useSelector((state) => state);
+  const { currentCategory } = state;
+  const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const {data:userName} = useQuery(QUERY_ALL_USERS)
+  const userList = userName?.users;
 
-const { data:userData } = useQuery(QUERY_ALL_USERS);
-const userName = userData?.users
-console.log(userName)
+  
 
-useEffect(() => {
-  if(data) {
-    dispatch({
-      type: UPDATE_PRODUCTS,
-      products: data.products
-    });
-
-    data.products.forEach((product) => {
-      idbPromise('products', 'put', product);
-    });
-    // add else if to check if `loading` is undefined in `useQuery()` Hook
-  } else if (!loading) {
-    // since we're offline, get all of the data from the `products` store
-    idbPromise('products', 'get').then((products) => {
-      // use retrieved data to set global state for offline browsing
+  useEffect(() => {
+    if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
-        products: products
+        products: data.products,
       });
-    });
+      
+      data.products.forEach((product) => {
+        idbPromise("products", "put", product);
+      });
+      // add else if to check if `loading` is undefined in `useQuery()` Hook
+    } else if (!loading) {
+      // since we're offline, get all of the data from the `products` store
+      idbPromise("products", "get").then((products) => {
+        // use retrieved data to set global state for offline browsing
+        dispatch({
+          type: UPDATE_PRODUCTS,
+          products: products,
+        });
+      });
+    }
+  }, [data, loading, dispatch]);
+  
+  
+  function filterUsers() {
+    if (!currentCategory) {
+      return userName?.users;
+    }
+    
+    return state.products.filter(
+      (product) => product.category._id === currentCategory
+    );
   }
-}, [data, loading, dispatch]);
-
-function filterProducts() {
-  if (!currentCategory) {
-    return state.products;
-  }
-
-  return state.products.filter(product => product.category._id === currentCategory);
-}
-
+  // UserArray();
   return (
     <div className="my-2">
       <h2>Live Streamers:</h2>
       {state.products.length ? (
         <div className="flex-row">
-            {filterProducts().map(product => (
-                <ProductItem
-                  key= {product._id}
-                  _id={product._id}
-                  image={product.image}
-                  userName = {userName}
-                  name={product.name}
-                  price={product.price}
-                  quantity={product.quantity}
-                />
-            ))}
+          {filterUsers().map((users) => (
+            <ProductItem
+              key={users._id}
+              _id={users._id}
+              // image={product.image}
+              name={users.twitchUserName}
+              firstName={users.firstName}
+              lastName={users.lastName}
+            />
+          ))}
         </div>
       ) : (
         <h3>You haven't added any products yet!</h3>
       )}
-      { loading ? 
-      <img src={spinner} alt="loading" />: null}
+      {loading ? <img src={spinner} alt="loading" /> : null}
     </div>
   );
 }

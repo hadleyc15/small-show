@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from '@apollo/react-hooks';
-
 import { QUERY_PRODUCTS } from "../utils/queries";
 import spinner from '../assets/spinner.gif'
-
-// import { useStoreContext } from "../utils/GlobalState";
 import { useDispatch, useSelector } from 'react-redux';
 import {
   REMOVE_FROM_LIST,
@@ -13,8 +10,7 @@ import {
   ADD_TO_LIST,
   UPDATE_PRODUCTS,
 } from '../utils/actions';
-import Cart from '../components/List';
-
+import List from '../components/List';
 import { idbPromise } from "../utils/helpers";
 
 function Detail() {
@@ -26,41 +22,41 @@ function Detail() {
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const { products, cart } = state;
+  const { products, list } = state;
 
-  const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === id)
+  const addToList = () => {
+    const itemInList = list.find((listItem) => listItem._id === id)
   
-    if (itemInCart) {
+    if (itemInList) {
       dispatch({
         type: UPDATE_LIST_QUANTITY,
         _id: id,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+        purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
       });
       // if we're updating quantity, use existing item data and increment purchaseQuantity value by one
-      idbPromise('cart', 'put', {
-        ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      idbPromise('list', 'put', {
+        ...itemInList,
+        purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
       });
     } else {
       dispatch({
         type: ADD_TO_LIST,
         product: { ...currentProduct, purchaseQuantity: 1 }
       });
-      // if product isn't in the cart yet, add it to the current shopping cart in IndexedDB
-      idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+      // if product isn't in the list yet, add it to the current shopping list in IndexedDB
+      idbPromise('list', 'put', { ...currentProduct, purchaseQuantity: 1 });
     }
   }
   
 
-  const removeFromCart = () => {
+  const removeFromList = () => {
     dispatch({
       type: REMOVE_FROM_LIST,
       _id: currentProduct._id
     });
   
-    // upon removal from cart, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
-    idbPromise('cart', 'delete', { ...currentProduct });
+    // upon removal from list, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
+    idbPromise('list', 'delete', { ...currentProduct });
   };
 
   useEffect(() => {
@@ -108,12 +104,12 @@ function Detail() {
             <strong>Price:</strong>
             ${currentProduct.price}
             {" "}
-            <button onClick={addToCart}>Add to cart</button>
+            <button onClick={addToList}>Add to list</button>
             <button
-              disabled={!cart.find(p => p._id === currentProduct._id)}
-              onClick={removeFromCart}
+              disabled={!list.find(p => p._id === currentProduct._id)}
+              onClick={removeFromList}
             >
-              Remove from Cart
+              Remove from list
 </button>
           </p>
 
@@ -126,7 +122,7 @@ function Detail() {
       {
         loading ? <img src={spinner} alt="loading" /> : null
       }
-      <Cart />
+      <List />
     </>
   );
 };

@@ -10,8 +10,6 @@ import {
     TOGGLE_LIST
 } from './actions';
 
-// import { useReducer } from 'react';
-
 const initialState = {
     products: [],
     categories: [],

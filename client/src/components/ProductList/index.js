@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import ProductItem from "../ProductItem";
 // import UserList from "../UserList";
 // import { QUERY_PRODUCTS } from "../../utils/queries";
-import spinner from "../../assets/spinner.gif";
+// import spinner from "../../assets/spinner.gif";
 // import { useStoreContext } from '../../utils/GlobalState';
 // import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { QUERY_ALL_USERS } from "../../utils/queries";
 // import { idbPromise } from "../../utils/helpers";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 
 function ProductList() {
-  const dispatch = useDispatch();
-  const state = useSelector((state) => state);
+  // const dispatch = useDispatch();
+  // const state = useSelector((state) => state);
   // const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const {loading, data:userName} = useQuery(QUERY_ALL_USERS)
@@ -67,7 +67,7 @@ function ProductList() {
           ))}
         </div>
       ) : (
-        <h3>You haven't added any products yet!</h3>
+        <h3>No streamers are currently active!</h3>
       )}
       {/* {loading ? <img src={spinner} alt="loading" /> : null} */}
     </div>

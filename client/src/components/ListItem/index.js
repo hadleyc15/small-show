@@ -7,10 +7,7 @@ const ListItem = ({ item }) => {
         <div className="flex-row">
             <div>
                 <Link to={`/products/${item._id}`}>
-                    <img
-                        alt={item.name}
-                        src={`/images/${item.image}`}
-                    />
+                    <p>{item.name}</p>
                 </Link>
 
             </div>

@@ -17,6 +17,7 @@ function ProductItem(item) {
     firstName,
     lastName,
     _id,
+
   } = item;
 
   console.log(name)

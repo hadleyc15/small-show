@@ -1,9 +1,9 @@
 import React from "react";
 import { useQuery } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
-import { pluralize } from "../../utils/helpers";
+// import { pluralize } from "../../utils/helpers";
 // import { useStoreContext } from '../../utils/GlobalState';
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
+import { ADD_TO_LIST, UPDATE_LIST_QUANTITY } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from "react-player";
@@ -24,26 +24,26 @@ function ProductItem(item) {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
 
-  const { cart } = state;
+  const { list } = state;
 
-const addToCart = () => {
-  const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-  if (itemInCart) {
+const addToList = () => {
+  const itemInList = list.find((listItem) => listItem._id === _id)
+  if (itemInList) {
     dispatch({
-      type: UPDATE_CART_QUANTITY,
+      type: UPDATE_LIST_QUANTITY,
       _id: _id,
-      purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
     });
-    idbPromise('cart', 'put', {
-      ...itemInCart,
-      purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+    idbPromise('list', 'put', {
+      ...itemInList,
+      purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
     });
   } else {
     dispatch({
-      type: ADD_TO_CART,
+      type: ADD_TO_LIST,
       product: { ...item, purchaseQuantity: 1 }
     });
-    idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+    idbPromise('list', 'put', { ...item, purchaseQuantity: 1 });
   }
 };
  
@@ -64,11 +64,7 @@ const addToCart = () => {
         <p>{firstName}</p>
         <p>{lastName}</p>
       </Link>
-      <div>
-        {/* <div>{quantity} {pluralize("item", quantity)} in stock</div> */}
-        {/* <span>{lastName}</span> */}
-      </div>
-      <button onClick={ addToCart }>Add to cart</button>
+      <button onClick={ addToList }>Add to list</button>
     </div>
   );
 

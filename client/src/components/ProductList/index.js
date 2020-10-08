@@ -17,6 +17,7 @@ function ProductList() {
 
   const {loading, data:userName} = useQuery(QUERY_ALL_USERS)
   const userList = userName?.users;
+  console.log(userList)
   
 
   // useEffect(() => {
@@ -68,7 +69,7 @@ function ProductList() {
       ) : (
         <h3>You haven't added any products yet!</h3>
       )}
-      {loading ? <img src={spinner} alt="loading" /> : null}
+      {/* {loading ? <img src={spinner} alt="loading" /> : null} */}
     </div>
   );
 }

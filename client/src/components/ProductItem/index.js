@@ -1,20 +1,26 @@
 import React from "react";
+import { useQuery } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
 // import { pluralize } from "../../utils/helpers";
 // import { useStoreContext } from '../../utils/GlobalState';
 import { ADD_TO_LIST, UPDATE_LIST_QUANTITY } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
 import { useDispatch, useSelector } from 'react-redux';
+import ReactPlayer from "react-player";
+
+
 
 function ProductItem(item) {
   const {
     image,
     name,
+    firstName,
+    lastName,
     _id,
-    // price,
-    // quantity
   } = item;
-  
+
+  console.log(name)
+
   const dispatch = useDispatch();
   const state = useSelector(state => state);
 
@@ -40,20 +46,29 @@ const addToList = () => {
     idbPromise('list', 'put', { ...item, purchaseQuantity: 1 });
   }
 };
-  
+ 
 
   return (
     <div className="card px-1 py-1">
       <Link to={`/products/${_id}`}>
-        <img
-          alt={name}
-          src={`/images/${image}`}
-        />
+      <div>
+      <ReactPlayer
+        url={`https://www.twitch.tv/${name}`}
+        playing = {false}
+        muted = {true}
+        width = {"240px"}
+        height = {"151.49px"}
+      />
+    </div>
         <p>{name}</p>
+        <p>{firstName}</p>
+        <p>{lastName}</p>
       </Link>
       <button onClick={ addToList }>Add to list</button>
     </div>
   );
+
+  
 }
 
 export default ProductItem;

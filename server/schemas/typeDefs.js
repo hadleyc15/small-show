@@ -26,6 +26,8 @@ const typeDefs = gql`
     _id: ID
     firstName: String
     lastName: String
+    userName: String
+    twitchUserName: String
     email: String
     orders: [Order]
   }
@@ -39,6 +41,7 @@ const typeDefs = gql`
     categories: [Category]
     products(category: ID, name: String): [Product]
     product(_id: ID!): Product
+    users: [User]
     user: User
     order(_id: ID!): Order
     checkout(products: [ID]!): Checkout

@@ -16,6 +16,17 @@ export const QUERY_PRODUCTS = gql`
   }
 `;
 
+export const QUERY_ALL_USERS = gql`
+  query {
+    users {
+      _id
+      firstName
+      lastName
+      twitchUserName
+    }
+  }
+`;
+
 export const QUERY_ALL_PRODUCTS = gql`
   {
     products {

@@ -18,7 +18,6 @@ function ProductList() {
 
   const {data:userName} = useQuery(QUERY_ALL_USERS)
   const userList = userName?.users;
-
   
 
   useEffect(() => {
@@ -46,19 +45,15 @@ function ProductList() {
   
   
   function filterUsers() {
-    if (!currentCategory) {
-      return userName?.users;
-    }
-    
-    return state.products.filter(
-      (product) => product.category._id === currentCategory
+    return userName?.users.filter(
+      (user) => user.twitchUserName
     );
   }
-  // UserArray();
+
   return (
     <div className="my-2">
       <h2>Live Streamers:</h2>
-      {state.products.length ? (
+      {userName?.users.length ? (
         <div className="flex-row">
           {filterUsers().map((users) => (
             <ProductItem

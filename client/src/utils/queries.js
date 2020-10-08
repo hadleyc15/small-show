@@ -27,7 +27,6 @@ export const QUERY_ALL_USERS = gql`
   }
 `;
 
-
 export const QUERY_ALL_PRODUCTS = gql`
   {
     products {

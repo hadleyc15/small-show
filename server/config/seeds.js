@@ -130,6 +130,7 @@ db.once('open', async () => {
 
   await User.deleteMany();
 
+  // TO DO //
   await User.create({
     firstName: 'Wyoming',
     lastName: 'Redneck',

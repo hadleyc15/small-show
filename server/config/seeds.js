@@ -135,6 +135,15 @@ db.once('open', async () => {
     lastName: 'Redneck',
     userName: "wyominredneck89",
     email: 'wyoming@testmail.com',
+    password: 'password12345'
+  });
+
+  await User.create({
+    firstName: 'Pamela',
+    lastName: 'Washington',
+    userName: 'pamela',
+    twitchUserName: '',
+    email: 'pamela@testmail.com',
     password: 'password12345',
     orders: [
     ]

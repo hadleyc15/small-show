@@ -1,47 +1,46 @@
 import React, { useEffect } from "react";
 import { useQuery } from "@apollo/react-hooks";
 import ProductItem from "../ProductItem";
-import UserList from "../UserList";
-import { QUERY_PRODUCTS } from "../../utils/queries";
+// import UserList from "../UserList";
+// import { QUERY_PRODUCTS } from "../../utils/queries";
 import spinner from "../../assets/spinner.gif";
 // import { useStoreContext } from '../../utils/GlobalState';
-import { UPDATE_PRODUCTS } from "../../utils/actions";
+// import { UPDATE_PRODUCTS } from "../../utils/actions";
 import { QUERY_ALL_USERS } from "../../utils/queries";
-import { idbPromise } from "../../utils/helpers";
+// import { idbPromise } from "../../utils/helpers";
 import { useDispatch, useSelector } from "react-redux";
 
 function ProductList() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const { currentCategory } = state;
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  // const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const {data:userName} = useQuery(QUERY_ALL_USERS)
+  const {loading, data:userName} = useQuery(QUERY_ALL_USERS)
   const userList = userName?.users;
   
 
-  useEffect(() => {
-    if (data) {
-      dispatch({
-        type: UPDATE_PRODUCTS,
-        products: data.products,
-      });
+  // useEffect(() => {
+  //   if (data) {
+  //     dispatch({
+  //       type: UPDATE_PRODUCTS,
+  //       products: data.products,
+  //     });
       
-      data.products.forEach((product) => {
-        idbPromise("products", "put", product);
-      });
-      // add else if to check if `loading` is undefined in `useQuery()` Hook
-    } else if (!loading) {
-      // since we're offline, get all of the data from the `products` store
-      idbPromise("products", "get").then((products) => {
-        // use retrieved data to set global state for offline browsing
-        dispatch({
-          type: UPDATE_PRODUCTS,
-          products: products,
-        });
-      });
-    }
-  }, [data, loading, dispatch]);
+  //     data.products.forEach((product) => {
+  //       idbPromise("products", "put", product);
+  //     });
+  //     // add else if to check if `loading` is undefined in `useQuery()` Hook
+  //   } else if (!loading) {
+  //     // since we're offline, get all of the data from the `products` store
+  //     idbPromise("products", "get").then((products) => {
+  //       // use retrieved data to set global state for offline browsing
+  //       dispatch({
+  //         type: UPDATE_PRODUCTS,
+  //         products: products,
+  //       });
+  //     });
+  //   }
+  // }, [data, loading, dispatch]);
   
   
   function filterUsers() {
@@ -53,7 +52,7 @@ function ProductList() {
   return (
     <div className="my-2">
       <h2>Live Streamers:</h2>
-      {userName?.users.length ? (
+      {!loading ? (
         <div className="flex-row">
           {filterUsers().map((users) => (
             <ProductItem

@@ -20,8 +20,6 @@ function ProductItem(item) {
 
   } = item;
 
-  console.log(name)
-
   const dispatch = useDispatch();
   const state = useSelector(state => state);
 

@@ -16,8 +16,6 @@ function ProductList() {
   // const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const {loading, data:userName} = useQuery(QUERY_ALL_USERS)
-  const userList = userName?.users;
-  console.log(userList)
   
 
   // useEffect(() => {

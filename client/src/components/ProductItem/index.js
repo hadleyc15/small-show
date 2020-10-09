@@ -1,63 +1,75 @@
 import React from "react";
+import { useQuery } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
-import { pluralize } from "../../utils/helpers";
+// import { pluralize } from "../../utils/helpers";
 // import { useStoreContext } from '../../utils/GlobalState';
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
+import { ADD_TO_LIST, UPDATE_LIST_QUANTITY } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
 import { useDispatch, useSelector } from 'react-redux';
+import ReactPlayer from "react-player";
+
+
 
 function ProductItem(item) {
   const {
     image,
     name,
+    firstName,
+    lastName,
     _id,
-    price,
-    quantity
+
   } = item;
-  
+
+  console.log(name)
+
   const dispatch = useDispatch();
   const state = useSelector(state => state);
 
-  const { cart } = state;
+  const { list } = state;
 
-const addToCart = () => {
-  const itemInCart = cart.find((cartItem) => cartItem._id === _id)
-  if (itemInCart) {
+const addToList = () => {
+  const itemInList = list.find((listItem) => listItem._id === _id)
+  if (itemInList) {
     dispatch({
-      type: UPDATE_CART_QUANTITY,
+      type: UPDATE_LIST_QUANTITY,
       _id: _id,
-      purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+      purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
     });
-    idbPromise('cart', 'put', {
-      ...itemInCart,
-      purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1
+    idbPromise('list', 'put', {
+      ...itemInList,
+      purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
     });
   } else {
     dispatch({
-      type: ADD_TO_CART,
+      type: ADD_TO_LIST,
       product: { ...item, purchaseQuantity: 1 }
     });
-    idbPromise('cart', 'put', { ...item, purchaseQuantity: 1 });
+    idbPromise('list', 'put', { ...item, purchaseQuantity: 1 });
   }
 };
-  
+ 
 
   return (
     <div className="card px-1 py-1">
       <Link to={`/products/${_id}`}>
-        <img
-          alt={name}
-          src={`/images/${image}`}
-        />
-        <p>{name}</p>
-      </Link>
       <div>
-        <div>{quantity} {pluralize("item", quantity)} in stock</div>
-        <span>${price}</span>
-      </div>
-      <button onClick={ addToCart }>Add to cart</button>
+      <ReactPlayer
+        url={`https://www.twitch.tv/${name}`}
+        playing = {false}
+        muted = {true}
+        width = {"240px"}
+        height = {"151.49px"}
+      />
+    </div>
+        <p>{name}</p>
+        <p>{firstName}</p>
+        <p>{lastName}</p>
+      </Link>
+      <button onClick={ addToList }>Add to list</button>
     </div>
   );
+
+  
 }
 
 export default ProductItem;

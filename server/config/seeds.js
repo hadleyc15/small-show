@@ -130,22 +130,67 @@ db.once('open', async () => {
 
   await User.deleteMany();
 
+  // TO DO //
+  await User.create({
+    firstName: 'Wyoming',
+    lastName: 'Redneck',
+    userName: "wyominredneck89",
+    email: 'wyoming@testmail.com',
+    password: 'password12345'
+  });
+
   await User.create({
     firstName: 'Pamela',
     lastName: 'Washington',
+    userName: 'pamela',
+    twitchUserName: '',
     email: 'pamela@testmail.com',
     password: 'password12345',
     orders: [
-      {
-        products: [products[0]._id, products[0]._id, products[1]._id]
-      }
     ]
   });
 
   await User.create({
     firstName: 'Elijah',
     lastName: 'Holt',
+    userName: "Eli",
+    twitchUserName: "meximeltt",
     email: 'eholt@testmail.com',
+    password: 'password12345'
+  });
+
+  await User.create({
+    firstName: 'someone',
+    lastName: 'someone',
+    userName: "crason8",
+    twitchUserName: "crason8",
+    email: 'someone@someone.com',
+    password: 'password12345'
+  });
+
+  await User.create({
+    firstName: 'another',
+    lastName: 'person',
+    userName: "crix",
+    twitchUserName: "crix",
+    email: 'crix@testmail.com',
+    password: 'password12345'
+  });
+
+  await User.create({
+    firstName: 'timothy',
+    lastName: 'pain',
+    userName: "tpain",
+    twitchUserName: "tpain",
+    email: 'tpain@testmail.com',
+    password: 'password12345'
+  });
+
+  await User.create({
+    firstName: 'real',
+    lastName: 'deal',
+    userName: "realdeal",
+    email: 'realdeal@testmail.com',
     password: 'password12345'
   });
 

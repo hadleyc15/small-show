@@ -10,7 +10,7 @@ import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import Success from "./pages/Success"
 // import { StoreProvider } from "./utils/GlobalState";
-import OrderHistory from "./pages/OrderHistory";
+// import OrderHistory from "./pages/OrderHistory";
 import Profile from "./pages/Profile";
 import { Provider } from 'react-redux';
 import store from "./utils/store";

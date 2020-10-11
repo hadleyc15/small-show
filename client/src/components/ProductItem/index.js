@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from '@apollo/react-hooks';
+// import { useQuery } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
 // import { pluralize } from "../../utils/helpers";
 // import { useStoreContext } from '../../utils/GlobalState';
@@ -12,7 +12,7 @@ import ReactPlayer from "react-player";
 
 function ProductItem(item) {
   const {
-    image,
+    // image,
     name,
     firstName,
     lastName,

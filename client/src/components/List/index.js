@@ -37,7 +37,9 @@ const List = () => {
 
   return (
     <div className="list">
-      <div className="close" onClick={toggleList}>[close]</div>
+      <div className="close" onClick={toggleList}><span
+          role="img"
+          aria-label="close">❌Close</span></div>
       <h2>Saved Streamers</h2>
       {state.list.length ? (
         <div>

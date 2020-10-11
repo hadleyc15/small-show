@@ -8,7 +8,6 @@ const ListItem = ({ item }) => {
         <div className="flex-row">
             <div>
                 <div>{item.twitchUserName}</div>
-                
             </div>
         </div>
     );

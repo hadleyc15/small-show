@@ -80,6 +80,7 @@ a {
 
 p {
   margin-top: 10px;
+  text-align: center;
 }
 
 a:hover {
@@ -205,10 +206,15 @@ input:focus {
 .card {
   width: 25%;
   text-align: center;
+  padding-top: 15px;
 }
 
 .error-text {
   color: var(--error);
+}
+
+::marker {
+  color: var(--primary)
 }
 
 @media screen and (max-width: 768px) {

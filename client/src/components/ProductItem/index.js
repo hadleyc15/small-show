@@ -80,8 +80,6 @@ const removeFromList = () => {
 </button>
     </div>
   );
-
-  
 }
 
 export default ProductItem;

@@ -141,7 +141,8 @@ db.once('open', async () => {
     // userName: 'BennyG',
     // twitchUserName: 'x_Acer_x',
     // email: 'benny@testmail.com',
-    password: 'password12345'
+    password: 'password12345',
+    adminApproved: 'false'
   });
 
   await User.create({

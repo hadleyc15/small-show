@@ -67,8 +67,6 @@ const addToList = () => {
       <button onClick={ addToList }>Add to list</button>
     </div>
   );
-
-  
 }
 
 export default ProductItem;

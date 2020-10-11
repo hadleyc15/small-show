@@ -58,7 +58,7 @@ function ProductList() {
               key={users._id}
               _id={users._id}
               // image={product.image}
-              name={users.twitchUserName}
+              twitchUserName={users.twitchUserName}
               firstName={users.firstName}
               lastName={users.lastName}
             />

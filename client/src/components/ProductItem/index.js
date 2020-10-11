@@ -13,7 +13,7 @@ import ReactPlayer from "react-player";
 function ProductItem(item) {
   const {
     image,
-    name,
+    twitchUserName,
     firstName,
     lastName,
     _id,
@@ -26,7 +26,6 @@ function ProductItem(item) {
   
   const { list } = state;
   
-  console.log(list)
 const addToList = () => {
   const itemInList = list.find((listItem) => listItem._id === _id)
   if (itemInList) {
@@ -54,14 +53,14 @@ const addToList = () => {
       <Link to={`/products/${_id}`}>
       <div>
       <ReactPlayer
-        url={`https://www.twitch.tv/${name}`}
+        url={`https://www.twitch.tv/${twitchUserName}`}
         playing = {false}
         muted = {true}
         width = {"240px"}
         height = {"151.49px"}
       />
     </div>
-        <p>{name}</p>
+        <p>{twitchUserName}</p>
         <p>{firstName}</p>
         <p>{lastName}</p>
       </Link>

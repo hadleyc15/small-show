@@ -23,8 +23,10 @@ function ProductItem(item) {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
 
+  
   const { list } = state;
-
+  
+  console.log(list)
 const addToList = () => {
   const itemInList = list.find((listItem) => listItem._id === _id)
   if (itemInList) {

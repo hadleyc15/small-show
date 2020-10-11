@@ -16,6 +16,7 @@ import ReactPlayer from "react-player";
 
 
 function Detail() {
+
   const dispatch = useDispatch();
   const state = useSelector(state => state);
   const { id } = useParams();
@@ -24,46 +25,44 @@ function Detail() {
 
   const { loading, data } = useQuery(QUERY_ALL_USERS);
 
-  // const {data:userName} = useQuery(QUERY_ALL_USERS)
-
   const { users, list } = state;
+  const _id = currentUser._id
+  const item = currentUser
+  console.log(list)
 
-  // console.log(userName)
 
-  // const addToList = () => {
-  //   const itemInList = list.find((listItem) => listItem._id === id)
-  
-  //   if (itemInList) {
-  //     dispatch({
-  //       type: UPDATE_LIST_QUANTITY,
-  //       _id: id,
-  //       purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
-  //     });
-  //     // if we're updating quantity, use existing item data and increment purchaseQuantity value by one
-  //     idbPromise('list', 'put', {
-  //       ...itemInList,
-  //       purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
-  //     });
-  //   } else {
-  //     dispatch({
-  //       type: ADD_TO_LIST,
-  //       user: { ...currentUser, purchaseQuantity: 1 }
-  //     });
-  //     // if product isn't in the list yet, add it to the current shopping list in IndexedDB
-  //     idbPromise('list', 'put', { ...currentUser, purchaseQuantity: 1 });
-  //   }
-  // }
+
+  const addToList = () => {
+    const itemInList = list.find((listItem) => listItem._id === currentUser._id)
+    if (itemInList) {
+      dispatch({
+        type: UPDATE_LIST_QUANTITY,
+        _id: _id,
+        purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
+      });
+      idbPromise('list', 'put', {
+        ...itemInList,
+        purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
+      });
+    } else {
+      dispatch({
+        type: ADD_TO_LIST,
+        product: { ...item, purchaseQuantity: 1 }
+      });
+      idbPromise('list', 'put', { ...item, purchaseQuantity: 1 });
+    }
+  };
   
 
-  // const removeFromList = () => {
-  //   dispatch({
-  //     type: REMOVE_FROM_LIST,
-  //     _id: currentUser._id
-  //   });
+  const removeFromList = () => {
+    dispatch({
+      type: REMOVE_FROM_LIST,
+      _id: currentUser._id
+    });
   
-  //   // upon removal from list, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
-  //   idbPromise('list', 'delete', { ...currentUser });
-  // };
+    // upon removal from list, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
+    idbPromise('list', 'delete', { ...currentUser });
+  };
 
   useEffect(() => {
     // already in global store
@@ -74,7 +73,7 @@ function Detail() {
     else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
-        users: data.users
+        users: data?.users
       });
   
       data.users.forEach((user) => {
@@ -93,7 +92,6 @@ function Detail() {
   }, [users, data, loading, dispatch, id]);
 
 
-  console.log(currentUser)
   return (
     <>
       {currentUser ? (
@@ -121,19 +119,14 @@ function Detail() {
             <strong>Twitch Username:</strong>
             {currentUser.twitchUserName}
             {" "}
-            {/* <button onClick={addToList}>Add to list</button> */}
-            {/* <button
+            <button onClick={addToList}>Follow User</button>
+            <button
               disabled={!list.find(p => p._id === currentUser._id)}
-              // onClick={removeFromList}
+              onClick={removeFromList}
             >
               Remove from list
-</button> */}
+</button>
           </p>
-
-          <img
-            // src={`/images/${currentProduct.image}`}
-            alt={currentUser.firstName}
-          />
         </div>
       ) : null}
       {

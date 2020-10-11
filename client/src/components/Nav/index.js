@@ -29,11 +29,11 @@ function Nav() {
             Login
             </Link>
           </li>
-          <li className="mx-1">
+          {/* <li className="mx-1">
             <Link to="/admin">
             Admin
             </Link>
-          </li>
+          </li> */}
         </ul>
       );
     }

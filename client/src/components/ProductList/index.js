@@ -61,8 +61,6 @@ function ProductList() {
               _id={users._id}
               // image={product.image}
               name={users.twitchUserName}
-              firstName={users.firstName}
-              lastName={users.lastName}
             />
           ))}
         </div>

@@ -70,8 +70,6 @@ const removeFromList = () => {
       />
     </div>
         <p>{twitchUserName}</p>
-        <p>{firstName}</p>
-        <p>{lastName}</p>
       </Link>
       <button onClick={ addToList }>Follow Streamer</button>
       <button

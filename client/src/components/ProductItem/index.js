@@ -73,9 +73,9 @@ const removeFromList = () => {
         <p>{firstName}</p>
         <p>{lastName}</p>
       </Link>
-      <button onClick={ addToList }>Follow User</button>
+      <button onClick={ addToList }>Follow Streamer</button>
       <button
-              // disabled={!list.find(p => p._id === listItem._id)}
+              disabled={!list.find(p => p._id === item._id)}
               onClick={removeFromList}
             >
               Remove Streamer

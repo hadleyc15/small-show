@@ -50,7 +50,7 @@ function ProductList() {
 
   return (
     <div className="my-2">
-      <h2>Live Streamers:</h2>
+      <h2>Streamers:</h2>
       {!loading ? (
         <div className="flex-row">
           {filterUsers().map((users) => (

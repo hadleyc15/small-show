@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_PRODUCTS } from "../utils/queries";
+import { QUERY_PRODUCTS, QUERY_ALL_USERS } from "../utils/queries";
 import spinner from '../assets/spinner.gif'
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -12,110 +12,127 @@ import {
 } from '../utils/actions';
 import List from '../components/List';
 import { idbPromise } from "../utils/helpers";
+import ReactPlayer from "react-player";
+
 
 function Detail() {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
   const { id } = useParams();
 
-  const [currentProduct, setCurrentProduct] = useState({})
+  const [currentUser, setCurrentUser] = useState({})
 
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const { loading, data } = useQuery(QUERY_ALL_USERS);
 
-  const { products, list } = state;
+  // const {data:userName} = useQuery(QUERY_ALL_USERS)
 
-  const addToList = () => {
-    const itemInList = list.find((listItem) => listItem._id === id)
+  const { users, list } = state;
+
+  // console.log(userName)
+
+  // const addToList = () => {
+  //   const itemInList = list.find((listItem) => listItem._id === id)
   
-    if (itemInList) {
-      dispatch({
-        type: UPDATE_LIST_QUANTITY,
-        _id: id,
-        purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
-      });
-      // if we're updating quantity, use existing item data and increment purchaseQuantity value by one
-      idbPromise('list', 'put', {
-        ...itemInList,
-        purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
-      });
-    } else {
-      dispatch({
-        type: ADD_TO_LIST,
-        product: { ...currentProduct, purchaseQuantity: 1 }
-      });
-      // if product isn't in the list yet, add it to the current shopping list in IndexedDB
-      idbPromise('list', 'put', { ...currentProduct, purchaseQuantity: 1 });
-    }
-  }
+  //   if (itemInList) {
+  //     dispatch({
+  //       type: UPDATE_LIST_QUANTITY,
+  //       _id: id,
+  //       purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
+  //     });
+  //     // if we're updating quantity, use existing item data and increment purchaseQuantity value by one
+  //     idbPromise('list', 'put', {
+  //       ...itemInList,
+  //       purchaseQuantity: parseInt(itemInList.purchaseQuantity) + 1
+  //     });
+  //   } else {
+  //     dispatch({
+  //       type: ADD_TO_LIST,
+  //       user: { ...currentUser, purchaseQuantity: 1 }
+  //     });
+  //     // if product isn't in the list yet, add it to the current shopping list in IndexedDB
+  //     idbPromise('list', 'put', { ...currentUser, purchaseQuantity: 1 });
+  //   }
+  // }
   
 
-  const removeFromList = () => {
-    dispatch({
-      type: REMOVE_FROM_LIST,
-      _id: currentProduct._id
-    });
+  // const removeFromList = () => {
+  //   dispatch({
+  //     type: REMOVE_FROM_LIST,
+  //     _id: currentUser._id
+  //   });
   
-    // upon removal from list, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
-    idbPromise('list', 'delete', { ...currentProduct });
-  };
+  //   // upon removal from list, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
+  //   idbPromise('list', 'delete', { ...currentUser });
+  // };
 
   useEffect(() => {
     // already in global store
-    if (products.length) {
-      setCurrentProduct(products.find(product => product._id === id));
-    } 
+    if (data?.users.length) {
+      setCurrentUser(data?.users.find(user => user._id === id));
+    }
     // retrieved from server
     else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
-        products: data.products
+        users: data.users
       });
   
-      data.products.forEach((product) => {
-        idbPromise('products', 'put', product);
+      data.users.forEach((user) => {
+        idbPromise('users', 'put', user);
       });
     }
     // get cache from idb
     else if (!loading) {
-      idbPromise('products', 'get').then((indexedProducts) => {
+      idbPromise('users', 'get').then((indexedUsers) => {
         dispatch({
           type: UPDATE_PRODUCTS,
-          products: indexedProducts
+          users: indexedUsers
         });
       });
     }
-  }, [products, data, loading, dispatch, id]);
+  }, [users, data, loading, dispatch, id]);
 
+
+  console.log(currentUser)
   return (
     <>
-      {currentProduct ? (
+      {currentUser ? (
         <div className="container my-1">
           <Link to="/">
-            ← Back to Products
+            ← Back to Users
           </Link>
+          <div className = "detail-video">
+          <ReactPlayer
+        url={`https://www.twitch.tv/${currentUser.twitchUserName}`}
+        playing = {false}
+        muted = {true}
+        width = {"750px"}
+        height = {"400px"}
+      />
+      </div>
 
-          <h2>{currentProduct.name}</h2>
+          <h2>{currentUser.name}</h2>
 
           <p>
-            {currentProduct.description}
+            {currentUser.description}
           </p>
 
           <p>
-            <strong>Price:</strong>
-            ${currentProduct.price}
+            <strong>Twitch Username:</strong>
+            {currentUser.twitchUserName}
             {" "}
-            <button onClick={addToList}>Add to list</button>
-            <button
-              disabled={!list.find(p => p._id === currentProduct._id)}
-              onClick={removeFromList}
+            {/* <button onClick={addToList}>Add to list</button> */}
+            {/* <button
+              disabled={!list.find(p => p._id === currentUser._id)}
+              // onClick={removeFromList}
             >
               Remove from list
-</button>
+</button> */}
           </p>
 
           <img
-            src={`/images/${currentProduct.image}`}
-            alt={currentProduct.name}
+            // src={`/images/${currentProduct.image}`}
+            alt={currentUser.firstName}
           />
         </div>
       ) : null}

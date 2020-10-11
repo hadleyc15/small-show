@@ -136,13 +136,6 @@ db.once('open', async () => {
     lastName: 'Redneck',
     userName: "wyominredneck89",
     email: 'wyoming@testmail.com',
-    // firstName: 'Benny',
-    // lastName: 'Garza',
-    // userName: 'BennyG',
-    // twitchUserName: 'x_Acer_x',
-    // email: 'benny@testmail.com',
-    password: 'password12345',
-    adminApproved: 'false'
   });
 
   await User.create({

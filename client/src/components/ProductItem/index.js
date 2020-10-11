@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery } from '@apollo/react-hooks';
+// import { useQuery } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
 // import { pluralize } from "../../utils/helpers";
 // import { useStoreContext } from '../../utils/GlobalState';

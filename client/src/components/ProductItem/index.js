@@ -9,15 +9,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from "react-player";
 
 
-
 function ProductItem(item) {
   const {
-    image,
     twitchUserName,
-    firstName,
-    lastName,
     _id,
-
   } = item;
 
   const dispatch = useDispatch();

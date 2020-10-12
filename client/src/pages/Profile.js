@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
+import {QUERY_USER} from "../utils/queries";
+import { useQuery } from '@apollo/react-hooks';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +15,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Profile() {
   const classes = useStyles();
+  const { data: userData } = useQuery(QUERY_USER);
+  const user = userData?.user || {};
+  useEffect(()=> {
+    console.log(user)
+  },[])
   return (
     <div className="container my-1">
       <Link to="/">
@@ -22,6 +29,7 @@ function Profile() {
       <h2>Profile Page</h2>
       {/* <form onSubmit={handleFormSubmit}> */}
         <div className="flex-row space-between my-2">
+          <p>{user.lastname}</p>
         {/* <p>{item.name}</p>
         <p>{name}</p>
         <p>{firstName}</p>

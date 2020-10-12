@@ -60,8 +60,8 @@ const removeFromList = () => {
         url={`https://www.twitch.tv/${twitchUserName}`}
         playing = {false}
         muted = {true}
-        width = {"240px"}
-        height = {"151.49px"}
+        width = {"410px"}
+        height = {"220px"}
       />
     </div>
         <p>{twitchUserName}</p>

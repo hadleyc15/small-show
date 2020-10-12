@@ -144,8 +144,7 @@ input:focus {
 }
 
 .container {
-  width: 85%;
-  max-width: 1200px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -155,12 +154,22 @@ input:focus {
   flex-wrap: wrap;
 }
 
+.video-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .space-between {
   justify-content: space-between;
 }
 
 .flex-end {
   justify-content: flex-end;
+}
+
+.video-row {
+  
 }
 
 .mx-1 {
@@ -204,9 +213,8 @@ input:focus {
 }
 
 .card {
-  width: 25%;
   text-align: center;
-  padding-top: 15px;
+  padding-top: 15px; 
 }
 
 .error-text {

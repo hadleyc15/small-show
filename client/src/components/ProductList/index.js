@@ -16,6 +16,8 @@ function ProductList() {
   // const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const {loading, data:userName} = useQuery(QUERY_ALL_USERS)
+  const userList = userName?.users;
+  console.log(userList)
   
 
   // useEffect(() => {
@@ -50,7 +52,7 @@ function ProductList() {
 
   return (
     <div className="my-2">
-      <h2>Streamers:</h2>
+      <h2>Live Streamers:</h2>
       {!loading ? (
         <div className="flex-row">
           {filterUsers().map((users) => (
@@ -58,7 +60,7 @@ function ProductList() {
               key={users._id}
               _id={users._id}
               // image={product.image}
-              twitchUserName={users.twitchUserName}
+              name={users.twitchUserName}
               firstName={users.firstName}
               lastName={users.lastName}
             />

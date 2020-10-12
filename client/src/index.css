@@ -168,10 +168,6 @@ input:focus {
   justify-content: flex-end;
 }
 
-.video-row {
-  
-}
-
 .mx-1 {
   margin-right: var(--spacing-one);
   margin-left: var(--spacing-one);

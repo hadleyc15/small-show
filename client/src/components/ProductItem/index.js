@@ -3,24 +3,17 @@ import { useQuery } from '@apollo/react-hooks';
 import { Link } from "react-router-dom";
 // import { pluralize } from "../../utils/helpers";
 // import { useStoreContext } from '../../utils/GlobalState';
-import { ADD_TO_LIST, UPDATE_LIST_QUANTITY } from '../../utils/actions';
+import { ADD_TO_LIST, UPDATE_LIST_QUANTITY, REMOVE_FROM_LIST } from '../../utils/actions';
 import { idbPromise } from "../../utils/helpers";
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPlayer from "react-player";
 
 
-
 function ProductItem(item) {
   const {
-    image,
-    name,
-    firstName,
-    lastName,
+    twitchUserName,
     _id,
-
   } = item;
-
-  console.log(name)
 
   const dispatch = useDispatch();
   const state = useSelector(state => state);
@@ -47,6 +40,16 @@ const addToList = () => {
     idbPromise('list', 'put', { ...item, purchaseQuantity: 1 });
   }
 };
+
+const removeFromList = () => {
+  dispatch({
+    type: REMOVE_FROM_LIST,
+    _id: item._id
+  });
+
+  // upon removal from list, delete the item from IndexedDB using the `currentProduct._id` to locate what to remove
+  idbPromise('list', 'delete', { ...item });
+};
  
 
   return (
@@ -54,22 +57,24 @@ const addToList = () => {
       <Link to={`/products/${_id}`}>
       <div>
       <ReactPlayer
-        url={`https://www.twitch.tv/${name}`}
+        url={`https://www.twitch.tv/${twitchUserName}`}
         playing = {false}
         muted = {true}
         width = {"240px"}
         height = {"151.49px"}
       />
     </div>
-        <p>{name}</p>
-        <p>{firstName}</p>
-        <p>{lastName}</p>
+        <p>{twitchUserName}</p>
       </Link>
-      <button onClick={ addToList }>Add to list</button>
+      <button onClick={ addToList }>Follow Streamer</button>
+      <button
+              disabled={!list.find(p => p._id === item._id)}
+              onClick={removeFromList}
+            >
+              Remove Streamer
+</button>
     </div>
   );
-
-  
 }
 
 export default ProductItem;

@@ -1,12 +1,13 @@
 :root {
-  --primary: #083874;
-  --secondary: #12d30c;
-  --tertiary: #dd2c00;
-  --light: #fafafa;
+  --primary: #0e0e10;
+  --secondary: #9147ff;
+  --tertiary: #f7f7f8;
+  --light: #f7f7f8;
   --dark: #272f32;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
+  background-color: #26262c;
 }
 
 * {
@@ -46,6 +47,8 @@ h1 {
 
 h2 {
   font-size: 2rem;
+  text-decoration: underline;
+  color: var(--light)
 }
 
 h3 {
@@ -67,7 +70,10 @@ h6 {
 p {
   font-size: 1.1rem;
   margin-top: 0;
+  color: var(--light);
 }
+
+
 
 a {
   color: var(--tertiary);
@@ -75,8 +81,14 @@ a {
   font-weight: bold;
 }
 
+p {
+  margin-top: 10px;
+  text-align: center;
+}
+
 a:hover {
   text-decoration: underline;
+  color: #9147ff;
 }
 
 header {
@@ -197,10 +209,15 @@ input:focus {
 .card {
   width: 25%;
   text-align: center;
+  padding-top: 15px;
 }
 
 .error-text {
   color: var(--error);
+}
+
+::marker {
+  color: var(--primary)
 }
 
 @media screen and (max-width: 768px) {

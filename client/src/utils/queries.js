@@ -79,3 +79,15 @@ export const QUERY_CHECKOUT = gql`
     }
   }
 `;
+
+export const QUERY_GET_NON_APPROVED_USERS = gql`
+  query {
+    users(adminApproved: false, admin: false) {
+      _id
+      firstName
+      lastName
+      twitchUserName
+      adminApproved
+    }
+  }
+`; 

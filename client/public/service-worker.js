@@ -11,6 +11,8 @@ const FILES_TO_CACHE = [
 
 ];
 
+
+
 // // Install the service worker
 self.addEventListener('install', function (evt) {
   evt.waitUntil(

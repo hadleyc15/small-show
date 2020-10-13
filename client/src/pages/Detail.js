@@ -97,9 +97,10 @@ function Detail() {
       {currentUser ? (
         <div className="container my-1">
           <Link to="/">
-            ← Back to Users
+            ← Back to Streamers
           </Link>
-          <div className = "detail-video">
+          <div className = "detail-video video-row">
+            <div>
           <ReactPlayer
         url={`https://www.twitch.tv/${currentUser.twitchUserName}`}
         playing = {false}
@@ -107,6 +108,7 @@ function Detail() {
         width = {"750px"}
         height = {"400px"}
       />
+      </div>
       </div>
 
           <h2>{currentUser.name}</h2>
@@ -119,13 +121,15 @@ function Detail() {
             <strong>Twitch Username:</strong>
             {currentUser.twitchUserName}
             {" "}
-            <button onClick={addToList}>Follow User</button>
-            <button
+            <div className="button_cont">
+              <button class="example_a" onClick={addToList} rel="nofollow noopener">Add to Watch List</button>
+              <button 
               disabled={!list.find(p => p._id === currentUser._id)}
               onClick={removeFromList}
-            >
-              Remove from list
-</button>
+              class="example_a" 
+              rel="nofollow noopener">Remove From Watch List
+              </button>
+              </div>
           </p>
         </div>
       ) : null}

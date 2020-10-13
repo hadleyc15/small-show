@@ -52,7 +52,7 @@ function ProductList() {
     <div className="my-2">
       <h2>Streamers:</h2>
       {!loading ? (
-        <div className="flex-row">
+        <div className="video-row">
           {filterUsers().map((users) => (
             <ProductItem
               key={users._id}

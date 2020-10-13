@@ -97,7 +97,7 @@ function Detail() {
       {currentUser ? (
         <div className="container my-1">
           <Link to="/">
-            ← Back to Users
+            ← Back to Streamers
           </Link>
           <div className = "detail-video">
           <ReactPlayer

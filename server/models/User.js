@@ -35,16 +35,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
-  adminApproved: {
-    type: Boolean,
-    required: true,
-    default: false
-  },
-  admin: {
-    type: Boolean,
-    required: true,
-    default: false
-  },
   orders: [Order.schema]
 });
 

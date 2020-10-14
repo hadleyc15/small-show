@@ -18,8 +18,8 @@ function Profile() {
   const { data: userData } = useQuery(QUERY_USER);
   const user = userData?.user || {};
   useEffect(()=> {
-    console.log(user)
-  },[])
+    console.log(userData)
+  },)
   return (
     <div className="container my-1">
       <Link to="/">

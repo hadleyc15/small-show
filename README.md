@@ -19,10 +19,10 @@
 > [GitHub Repository](https://github.com/1hoppy1/small-show)
 
 ## **Contributors** 
-> Jim Hopkinson | [Email](jahopki@hotmail.com) | [Github](https://github.com/1hoppy1)
-> Mason Marinko | [Email](mason.p.marinko@gmail.com) | [Github](https://github.com/MasonMarinko)
-> Christopher Hadley | [Email](hadleyc15@yahoo.com) | [Github](https://github.com/hadleyc15) 
-> Paul Throckmorton | [Email](throckmortonfam@gmail.com) | [Github](https://github.com/siwel20)   
+* Jim Hopkinson | [Email](jahopki@hotmail.com) | [Github](https://github.com/1hoppy1)
+* Mason Marinko | [Email](mason.p.marinko@gmail.com) | [Github](https://github.com/MasonMarinko)
+* Christopher Hadley | [Email](hadleyc15@yahoo.com) | [Github](https://github.com/hadleyc15) 
+* Paul Throckmorton | [Email](throckmortonfam@gmail.com) | [Github](https://github.com/siwel20)   
 
 ## **Development**
 This application was developed with the following application structures:

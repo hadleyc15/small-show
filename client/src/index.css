@@ -73,7 +73,9 @@ p {
   color: var(--light);
 }
 
-
+label {
+  color: var(--light)
+}
 
 a {
   color: var(--tertiary);

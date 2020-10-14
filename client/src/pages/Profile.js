@@ -18,8 +18,8 @@ function Profile() {
   const { data: userData } = useQuery(QUERY_USER);
   const user = userData?.user || {};
   useEffect(()=> {
-    console.log(userData)
-  },)
+    console.log(user)
+  })
   return (
     <div className="container my-1">
       <Link to="/">
@@ -29,7 +29,9 @@ function Profile() {
       <h2>Profile Page</h2>
       {/* <form onSubmit={handleFormSubmit}> */}
         <div className="flex-row space-between my-2">
-          <p>{user.lastname}</p>
+          <p>{user.lastName}</p>
+          <p>{user.firstName}</p>
+          <p>{user.twitchUserName}</p>
         {/* <p>{item.name}</p>
         <p>{name}</p>
         <p>{firstName}</p>

@@ -122,11 +122,11 @@ function Detail() {
             {currentUser.twitchUserName}
             {" "}
             <div className="button_cont">
-              <button class="example_a" onClick={addToList} rel="nofollow noopener">Add to Watch List</button>
+              <button className="example_a" onClick={addToList} rel="nofollow noopener">Add to Watch List</button>
               <button 
               disabled={!list.find(p => p._id === currentUser._id)}
               onClick={removeFromList}
-              class="example_a" 
+              className="example_a" 
               rel="nofollow noopener">Remove From Watch List
               </button>
               </div>

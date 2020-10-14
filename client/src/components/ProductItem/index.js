@@ -68,12 +68,12 @@ const removeFromList = () => {
       </Link>
 
       <div className="button_cont">
-              <button class="example_ab" onClick={addToList} rel="nofollow noopener">Add to Watch List</button>
+              <button className="example_ab" onClick={addToList} rel="nofollow noopener">Add {twitchUserName}<br/>to Watch List</button>
               <button 
               disabled={!list.find(p => p._id === item._id)}
               onClick={removeFromList}
-              class="example_ab" 
-              rel="nofollow noopener">Remove From Watch List
+              className="example_ab" 
+              rel="nofollow noopener">Remove {twitchUserName}<br/>From Watch List
               </button>
               </div>
     </div>

@@ -60,19 +60,22 @@ const removeFromList = () => {
         url={`https://www.twitch.tv/${twitchUserName}`}
         playing = {false}
         muted = {true}
-        width = {"240px"}
-        height = {"151.49px"}
+        width = {"410px"}
+        height = {"220px"}
       />
     </div>
         <p>{twitchUserName}</p>
       </Link>
-      <button onClick={ addToList }>Follow Streamer</button>
-      <button
+
+      <div className="button_cont">
+              <button class="example_ab" onClick={addToList} rel="nofollow noopener">Add to Watch List</button>
+              <button 
               disabled={!list.find(p => p._id === item._id)}
               onClick={removeFromList}
-            >
-              Remove Streamer
-</button>
+              class="example_ab" 
+              rel="nofollow noopener">Remove From Watch List
+              </button>
+              </div>
     </div>
   );
 }

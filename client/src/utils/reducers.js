@@ -1,7 +1,5 @@
 import {
     UPDATE_PRODUCTS,
-    UPDATE_CATEGORIES,
-    UPDATE_CURRENT_CATEGORY,
     ADD_TO_LIST,
     ADD_MULTIPLE_TO_LIST,
     REMOVE_FROM_LIST,
@@ -12,8 +10,6 @@ import {
 
 const initialState = {
     products: [],
-    categories: [],
-    currentCategory: '',
     list: [],
     listOpen: false
 };
@@ -25,18 +21,6 @@ export const reducers = (state = initialState, action) => {
             return {
                 ...state,
                 products: [...action.products]
-            };
-        // if action type value is the value of `UPDATE_CATEGORIES`, return a new state object with an updated categories array
-        case UPDATE_CATEGORIES:
-            return {
-                ...state,
-                categories: [...action.categories]
-            };
-
-        case UPDATE_CURRENT_CATEGORY:
-            return {
-                ...state,
-                currentCategory: action.currentCategory
             };
 
         case ADD_TO_LIST:

@@ -29,13 +29,19 @@ function Profile() {
       <h2>Profile Page</h2>
       {/* <form onSubmit={handleFormSubmit}> */}
         <div className="flex-row">
-          <p>-First Name: {user.firstName}</p>
+          <p>
+            <u>First Name:</u> {user.firstName}
+          </p>
         </div>
         <div className="flex-row">
-          <p>-Last Name: {user.lastName}</p>
+          <p>
+            <u>Last Name:</u> {user.lastName}
+          </p>
         </div>
         <div className="flex-row">
-        <p>-Twitch Username: {user.twitchUserName}</p>
+        <p>
+          <u>Twitch Username:</u> {user.twitchUserName}
+        </p>
         </div>
         <div className="flex-row">
           <p>**More features coming soon!**</p>

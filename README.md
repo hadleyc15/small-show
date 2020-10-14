@@ -79,15 +79,18 @@ Meet the minimum requirements of a PWA:
 Finally, you must add your project to the portfolio that you created in Module 20.
 
 ## **Screenshots**
+### <div align="center">**Sign-up Screen**</div>
+<img src="/assets/images/Screenshot%20(146).png" />
 
-### <div align="center">**....**</div>
-<img src="/assets/images/Screenshot%20().png" />
+### <div align="center">**Small Show Home Page**</div>
+<img src="/assets/images/Screenshot%20(144).png" />
 
-### <div align="center">**.....**</div>
-<img src="/assets/images/Screenshot%20().png" />
+### <div align="center">**Saved List of Streamers**</div>
+<img src="/assets/images/Screenshot%20(145).png" />
 
-### <div align="center">**....**</div>
-<img src="/assets/images/Screenshot%20().png" />
+
+### <div align="center">**Streamer Page showing live video**</div>
+<img src="/assets/images/Screenshot%20(143).png" />
 
 
 ## **Questions**

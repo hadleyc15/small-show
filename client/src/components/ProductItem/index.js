@@ -64,7 +64,7 @@ const removeFromList = () => {
         height = {"220px"}
       />
     </div>
-        <p>{twitchUserName}</p>
+        <p className="username">{twitchUserName}</p>
       </Link>
 
       <div className="button_cont">

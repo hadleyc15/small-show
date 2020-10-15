@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ListItem = ({ item }) => {
 
     return (
-        <div className="flex-row">
+        <div className="user-small flex-row">
             <div>
                 <Link to={`/products/${item._id}`}>
                     <p className="username">{item.twitchUserName}</p>

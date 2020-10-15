@@ -102,18 +102,6 @@ header a {
   color: var(--light);
 }
 
-/* button {
-  font-size: 1rem;
-  text-decoration: none;
-  padding: 0.25rem 1rem;
-  border-radius: .5rem;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  margin: 0 1px;
-  background-color: var(--secondary);
-} */
-
 button:hover {
   opacity: 0.8;
 }
@@ -133,7 +121,7 @@ span[role="img"] {
 }
 
 form {
-  width: 40%;
+  width: 21%;
 }
 
 input {
@@ -283,7 +271,5 @@ input:focus {
 }
 
 @media screen and (max-width: 768px) {
-  .card {
-    width: 100%;
-  }
+
 }

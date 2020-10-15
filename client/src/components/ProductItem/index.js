@@ -55,10 +55,10 @@ const removeFromList = () => {
   return (
     <div className="card px-1 py-1">
       <Link to={`/products/${_id}`}>
-      <div>
+      <div className = "main-page-videos">
       <ReactPlayer
         url={`https://www.twitch.tv/${twitchUserName}`}
-        playing = {false}
+        playing = {true}
         muted = {true}
         width = {"410px"}
         height = {"220px"}

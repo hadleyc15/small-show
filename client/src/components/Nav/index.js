@@ -14,6 +14,11 @@ function Nav() {
               Logout
             </a>
           </li>
+          <li className="mx-1">
+            <a href="/profile">
+              Profile
+            </a>
+          </li>
         </ul>
       );
     } else {

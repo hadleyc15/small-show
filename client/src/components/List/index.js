@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 const List = () => {
   const dispatch = useDispatch();
   const state = useSelector(state => state);
-  
 
   useEffect(() => {
     async function getList() {

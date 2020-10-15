@@ -6,6 +6,18 @@ import { useQuery } from '@apollo/react-hooks';
 function Profile() {
   const { data: userData } = useQuery(QUERY_USER);
   const user = userData?.user || {};
+  console.log(user)
+
+  function twitchName(props) {
+    if (user.twitchUserName) { 
+      return (       
+        <p>
+        <u>Twitch Username:</u> {user.twitchUserName}
+      </p>
+        )
+    }
+  }
+  
   useEffect(()=> {
   })
   return (
@@ -26,9 +38,10 @@ function Profile() {
           </p>
         </div>
         <div className="flex-row">
-        <p>
+          {twitchName()}
+        {/* <p>
           <u>Twitch Username:</u> {user.twitchUserName}
-        </p>
+        </p> */}
         </div>
         <div className="flex-row">
           <p>**More features coming soon!**</p>

@@ -38,9 +38,10 @@ const List = () => {
   return (
     <div className="list">
       <div className="close" onClick={toggleList}><span
+          className = "close-button"
           role="img"
           aria-label="close">❌Close</span></div>
-      <h2>Saved Streamers</h2>
+      <h2 className = "stream-cart">Saved Streamers</h2>
       {state.list.length ? (
         <div>
           {state.list.map(item => (
@@ -51,8 +52,8 @@ const List = () => {
           <h3>
             <span role="img" aria-label="shocked">
               😱
-      </span>
       You haven't added anyone to your list yet!
+      </span>
           </h3>
         )}
     </div>

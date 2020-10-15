@@ -110,15 +110,7 @@ function Detail() {
       />
       </div>
       </div>
-
-          <h2>{currentUser.name}</h2>
-
-          <p>
-            {currentUser.description}
-          </p>
-
-          <p>
-            <strong>Twitch Streamer:</strong>
+          <p className="username-specific">
             {currentUser.twitchUserName}
             {" "}
             <div className="button_cont">

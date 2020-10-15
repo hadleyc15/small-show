@@ -175,6 +175,12 @@ input:focus {
   transition: all 0.4s ease 0s;
 }
 
+.username-specific {
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 .example_ab {
   color: #fff !important;
   text-transform: uppercase;

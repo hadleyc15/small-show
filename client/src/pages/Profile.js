@@ -39,9 +39,11 @@ function Profile() {
         </div>
         <div className="flex-row">
           {twitchName()}
-        {/* <p>
-          <u>Twitch Username:</u> {user.twitchUserName}
-        </p> */}
+         </div>
+          <div className="flex-row">
+        <p>
+          <u className = "profile-name">Email Address:</u> {user.email}
+        </p>
         </div>
         <div className="flex-row">
           <p>**More features coming soon!**</p>

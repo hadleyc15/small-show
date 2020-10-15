@@ -17,6 +17,7 @@ export const QUERY_USER = gql`
     firstName
     lastName
     twitchUserName
+    email
     orders {
       _id
       purchaseDate

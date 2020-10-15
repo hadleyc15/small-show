@@ -94,7 +94,8 @@ a:hover {
 }
 
 header {
-  background: var(--primary);
+  background-color: var(--primary);
+  background-image: linear-gradient(black, #9147ff);
 }
 
 header a {

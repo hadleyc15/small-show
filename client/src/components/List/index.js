@@ -51,7 +51,9 @@ const List = () => {
           <h3>
             <span role="img" aria-label="shocked">
               😱
-      You haven't added anyone to your list yet!
+      You haven't added
+      <br/>
+      anyone to your list yet!
       </span>
           </h3>
         )}

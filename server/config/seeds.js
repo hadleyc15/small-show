@@ -77,6 +77,69 @@ db.once('open', async () => {
     email: 'GemsFireplace@testemail.com',
     password: 'password12345',
   });
+
+  await User.create({
+    firstName: 'Don',
+    lastName: 'Ringle',
+    userName: "BurnBarrelNetwork",
+    twitchUserName: "BurnBarrelNetwork",
+    email: 'BurnBarrelNetwork@testemail.com',
+    password: 'password12345',
+  });
+
+  await User.create({
+    firstName: 'Greggory',
+    lastName: 'Ring',
+    userName: "P4Tmachine",
+    twitchUserName: "P4Tmachine",
+    email: 'P4Tmachine@testemail.com',
+    password: 'password12345',
+  });
+
+  await User.create({
+    firstName: 'Jason',
+    lastName: 'Rodney',
+    userName: "OperationPuppet",
+    twitchUserName: "OperationPuppet",
+    email: 'OperationPuppet@testemail.com',
+    password: 'password12345',
+  });
+
+  await User.create({
+    firstName: 'Bob',
+    lastName: 'Filloy',
+    userName: "StarliteDriveIn",
+    twitchUserName: "StarliteDriveIn",
+    email: 'StarliteDriveIn@testemail.com',
+    password: 'password12345',
+  });
+
+  await User.create({
+    firstName: 'Bill',
+    lastName: 'Ludgate',
+    userName: "Monstercat",
+    twitchUserName: "Monstercat",
+    email: 'monstercat@testemail.com',
+    password: 'password12345',
+  });
+
+  await User.create({
+    firstName: 'William',
+    lastName: 'Kerr',
+    userName: "NYC_Timescape",
+    twitchUserName: "NYC_Timescape",
+    email: 'NYC_Timescape@testemail.com',
+    password: 'password12345',
+  });
+
+  await User.create({
+    firstName: 'Wilmer',
+    lastName: 'Fudd',
+    userName: "RogueValley",
+    twitchUserName: "RogueValley",
+    email: 'RogueValley@testemail.com',
+    password: 'password12345',
+  });
   
   await User.create({
     firstName: 'Wyoming',

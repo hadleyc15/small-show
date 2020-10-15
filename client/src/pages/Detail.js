@@ -103,7 +103,7 @@ function Detail() {
             <div>
           <ReactPlayer
         url={`https://www.twitch.tv/${currentUser.twitchUserName}`}
-        playing = {false}
+        playing = {true}
         muted = {true}
         width = {"750px"}
         height = {"400px"}

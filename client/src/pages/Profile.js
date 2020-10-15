@@ -1,23 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import {QUERY_USER} from "../utils/queries";
 import { useQuery } from '@apollo/react-hooks';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-}));
 function Profile() {
-  const classes = useStyles();
   const { data: userData } = useQuery(QUERY_USER);
   const user = userData?.user || {};
   useEffect(()=> {
-    console.log(user)
   })
   return (
     <div className="container my-1">
@@ -26,7 +15,6 @@ function Profile() {
       </Link>
 
       <h2>Profile Page</h2>
-      {/* <form onSubmit={handleFormSubmit}> */}
         <div className="flex-row">
           <p>
             <u>First Name:</u> {user.firstName}

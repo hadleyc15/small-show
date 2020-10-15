@@ -50,7 +50,6 @@ function ProductList() {
 
   return (
     <div className="my-2">
-      <h2>Streamers:</h2>
       {!loading ? (
         <div className="video-row">
           {filterUsers().map((users) => (

@@ -183,6 +183,11 @@ input:focus {
   font-weight: 600;
 }
 
+.flex-row-title {
+  display: flex;
+  justify-content: center;
+}
+
 .example_ab {
   color: #fff !important;
   text-transform: uppercase;

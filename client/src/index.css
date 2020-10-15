@@ -112,6 +112,16 @@ button[disabled] {
   background: gray;
 }
 
+.profile-name {
+  font-weight: 900;
+  font-size: 20px;
+  padding-right: 20px;
+}
+
+.profile-header {
+  padding-bottom: 20px;
+}
+
 img {
   max-width: 100%;
 }

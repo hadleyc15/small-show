@@ -12,7 +12,7 @@ function Profile() {
     if (user.twitchUserName) { 
       return (       
         <p>
-        <u>Twitch Username:</u> {user.twitchUserName}
+        <u className = "profile-name">Twitch Username:</u> {user.twitchUserName}
       </p>
         )
     }
@@ -26,15 +26,15 @@ function Profile() {
         ← Go to Home
       </Link>
 
-      <h2>Profile Page</h2>
+      <h2 className = "profile-header">Your Profile</h2>
         <div className="flex-row">
           <p>
-            <u>First Name:</u> {user.firstName}
+            <u className = "profile-name">First Name:</u> {user.firstName}
           </p>
         </div>
         <div className="flex-row">
           <p>
-            <u>Last Name:</u> {user.lastName}
+            <u className = "profile-name">Last Name:</u> {user.lastName}
           </p>
         </div>
         <div className="flex-row">

@@ -7,7 +7,7 @@ const ListItem = ({ item }) => {
         <div className="flex-row">
             <div>
                 <Link to={`/products/${item._id}`}>
-                    <p>{item.twitchUserName}</p>
+                    <p className="username">{item.twitchUserName}</p>
                 </Link>
 
             </div>

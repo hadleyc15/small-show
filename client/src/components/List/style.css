@@ -2,11 +2,11 @@
     position: fixed;
     top: 0;
     right: 0;
-    min-width: 20%;
-    max-width: 30%;
-    max-height: 60%;
+    max-width: 10%;
     background-color: #26262c;
     overflow: auto;
+    margin-top: 20px;
+    margin-right: 20px;
     padding: .5rem;
     box-shadow: 0 0 1rem rgba(0, 0, 0, .5);
     border-bottom-left-radius: .5rem;
@@ -15,10 +15,31 @@
   .close {
     color: var(--tertiary)
   }
+
+  .stream-cart {
+    font-weight: 600;
+    color: #9147ff;
+  }
+
+  span {
+    color: #fff;
+  }
+
+  .close-button:hover {
+    border: none;
+    background: red;
+    color: #fff;
+    padding: 4px;
+    font-size: 16px;
+    border-radius: 5px;
+    position: relative;
+    box-sizing: border-box;
+    transition: all 500ms ease; 
+  }
   
   .list h2 {
     font-size: 1.5rem;
-    border-bottom: 1px solid var(--tertiary);
+    border-bottom: 1px solid #9147ff;
     text-decoration: none;
     padding-bottom: .5rem;
     margin: 1rem 0;
@@ -31,9 +52,16 @@
     cursor: pointer;
     color: var(--tertiary);
   }
+
+  .username {
+    text-transform: uppercase;
+  }
   
-  .list.close:hover {
-    text-decoration: underline;
+  .username:hover {
+    color: black;
+    background:#9147ff;
+    border-radius: 3px;
+    transition: all 500ms ease; 
   }
   
   .list-closed {

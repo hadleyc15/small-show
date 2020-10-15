@@ -177,6 +177,17 @@ input:focus {
   transition: all 0.4s ease 0s;
 }
 
+.username-specific {
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.flex-row-title {
+  display: flex;
+  justify-content: center;
+}
+
 .example_ab {
   color: #fff !important;
   text-transform: uppercase;
@@ -185,7 +196,7 @@ input:focus {
   padding: 10px;
   border-radius: 5px;
   display: inline-block;
-  margin: 10px;
+  margin: 3px;
   border: none;
   transition: all 0.4s ease 0s;
 }
